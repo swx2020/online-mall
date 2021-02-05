@@ -1,21 +1,36 @@
 <template>
-    <div>
+    <div id="home">
         <!-- 引用组件NavBar -->
         <nav-bar class="home-nav">
             <!-- 因为这里只需要替换中间部分，所以只需要写一个命名插槽 -->
             <div slot="center">购物街</div>
         </nav-bar>
+
+        <!-- 轮播图 -->
+        <!-- :banners="banners" 参考父传子 -->
+        <home-swiper :banners="banners"></home-swiper>
+
+        <!-- 轮播图2 -->
+        <!-- <div id="hy-swiper">
+            <div class="swiper">
+                <img src="~assets/img/home/recommend_bg.jpg" alt="">
+                < !-- 循环遍历图片 -- >
+            </div>
+        </div> -->
     </div>
 </template>
 
 <script>
 import NavBar from 'components/common/navbar/NavBar.vue'
+import HomeSwiper from './childComponents/HomeSwiper.vue'
+
 import {getHomeMultidata} from 'network/home.js';
 
 export default {
     name: 'Home',
     components: {
-        NavBar
+        NavBar,
+        HomeSwiper
     },
     data() {
         return {
@@ -61,5 +76,9 @@ export default {
 .home-nav {
     background-color: var(--color-tint);
     color: #fff;
+}
+
+.swiper img {
+    width: 320px;
 }
 </style>
